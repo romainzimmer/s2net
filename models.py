@@ -88,7 +88,7 @@ class SpikingDenseLayer(torch.nn.Module):
             if self.lateral_connections:
                 rst = torch.einsum("ab,bc ->ac", spk, d)
             else:
-                rst = spk*self.b
+                rst = spk*self.b*norm
             
             input_ = h[:,t,:]
             if self.recurrent:
@@ -191,7 +191,7 @@ class SpikingConv1DLayer(torch.nn.Module):
             if self.lateral_connections:
                 rst = torch.einsum("ab,bd ->ad", spk, d)
             else:
-                rst = torch.einsum("ab,b->ab", spk, self.b)
+                rst = torch.einsum("ab,b,b->ab", spk, self.b, norm)
             
             input_ = conv_x[:,:,t]
             if self.recurrent:
@@ -304,7 +304,7 @@ class SpikingConv2DLayer(torch.nn.Module):
             if self.lateral_connections:
                 rst = torch.einsum("abc,bd ->adc", spk, d)
             else:
-                rst = torch.einsum("abc,b->abc", spk, self.b)
+                rst = torch.einsum("abc,b,b->abc", spk, self.b, norm)
             
             input_ = conv_x[:,:,t,:]
             if self.recurrent:
@@ -421,7 +421,7 @@ class SpikingConv3DLayer(torch.nn.Module):
             if self.lateral_connections:
                 rst = torch.einsum("abcd,be ->aecd", spk, d)
             else:
-                rst = torch.einsum("abcd,b->abcd", spk, self.b)
+                rst = torch.einsum("abcd,b,b->abcd", spk, self.b, norm)
             
             input_ = conv_x[:,:,t,:,:]
             if self.recurrent:
