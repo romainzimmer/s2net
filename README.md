@@ -9,7 +9,7 @@ PyTorch based implementation of Spiking Neural Network layers:
 
 including optional lateral and recurrent connections.
 
-If you use this code, please consider citing: R. Zimmer, T. Pellegrini2 , S. F. Singh, and T. Masquelier. Technical report: supervised training of convolutional spiking neural networks with PyTorch. In https://arxiv.org/abs/1911.10124
+If you use this code, please consider citing: R. Zimmer, T. Pellegrini , S. F. Singh, and T. Masquelier. Technical report: supervised training of convolutional spiking neural networks with PyTorch. In https://arxiv.org/abs/1911.10124
 
 This work is based on F. Zenke's tutorial on surrogate gradient learning in Spiking Neural Networks (https://github.com/fzenke/spytorch).
 
